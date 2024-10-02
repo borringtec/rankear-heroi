@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Partidas Rankeadas</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+
+<h1>Calculadora de Partidas Rankeadas</h1>
+
+<label for="vitorias">Vitórias:</label>
+<input type="number" id="vitorias" placeholder="Digite a quantidade de vitórias">
+<br><br>
+<label for="derrotas">Derrotas:</label>
+<input type="number" id="derrotas" placeholder="Digite a quantidade de derrotas">
+<br><br>
+<button onclick="classificarJogador()">Rankear</button>
+
+<p id="resultado"></p>
+
+<script>
+    function classificarJogador() {
+        const vitorias = parseInt(document.getElementById('vitorias').value);
+        const derrotas = parseInt(document.getElementById('derrotas').value);
+        const saldoVitorias = vitorias - derrotas;
+        let nivel;
+
+        if (vitorias < 10) {
+            nivel = "Ferro";
+        } else if (vitorias <= 20) {
+            nivel = "Bronze";
+        } else if (vitorias <= 50) {
+            nivel = "Prata";
+        } else if (vitorias <= 80) {
+            nivel = "Ouro";
+        } else if (vitorias <= 90) {
+            nivel = "Diamante";
+        } else if (vitorias <= 100) {
+            nivel = "Lendário";
+        } else {
+            nivel = "Imortal";
+        }
+
+        document.getElementById('resultado').innerText = `O Herói tem de saldo de ${saldoVitorias} está no nível de ${nivel}`;
+    }
+</script>
+
+</body>
+</html>
